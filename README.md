@@ -29,3 +29,8 @@ sudo swift install.swift
 - iOS Application Design Patterns in Swift book [App Architecture](https://www.objc.io/books/app-architecture/) book!
 - [Swift + MVVM + Two Way Binding = Win!](https://codeburst.io/swift-mvvm-two-way-binding-win-b447edc55ff5)
 - [Architecting iOS Apps with VIPER](https://www.objc.io/issues/13-architecture/viper/)
+
+### Contribution
+Architecture Kit Swift is fully open-source. Allsuggestions and contributions are welcome!
+
+
