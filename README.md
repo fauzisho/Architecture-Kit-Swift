@@ -9,4 +9,12 @@ Only need execute this command in terminal:
 sudo swift install.swift
 ```
 
+### Architecture Template
 
+- [x] MVP
+- [x] MVVM
+- [ ] MVVM-C
+- [ ] VIPER
+- [ ] VIVMER
+- [ ] TEA
+- [ ] REDUX
