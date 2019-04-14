@@ -8,7 +8,7 @@
 
 import Foundation
 
-let templateName = "Module MVP.xctemplate"
+let templateName = "MVP Kit.xctemplate"
 let destinationRelativePath = "/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/Project Templates/iOS/Application"
 
 func printInConsole(_ message:Any){
