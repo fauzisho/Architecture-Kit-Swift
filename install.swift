@@ -8,7 +8,8 @@
 
 import Foundation
 
-let templateName = "MVP Kit.xctemplate"
+let templateMVP = "MVP Kit.xctemplate"
+let templateMVVM = "MVVM Kit.xctemplate"
 let destinationRelativePath = "/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/Project Templates/iOS/Application"
 
 func printInConsole(_ message:Any){
@@ -22,17 +23,30 @@ func moveTemplate(){
     let fileManager = FileManager.default
     let destinationPath = bash(command: "xcode-select", arguments: ["--print-path"]).appending(destinationRelativePath)
     do {
-        if !fileManager.fileExists(atPath:"\(destinationPath)/\(templateName)"){
+        if !fileManager.fileExists(atPath:"\(destinationPath)/\(templateMVP)"){
         
-            try fileManager.copyItem(atPath: templateName, toPath: "\(destinationPath)/\(templateName)")
+            try fileManager.copyItem(atPath: templateMVP, toPath: "\(destinationPath)/\(templateMVP)")
             
-            printInConsole("✅  Template installed succesfully 🎉. Enjoy it 🙂")
+            printInConsole("✅  Architecture Kit MVP installed succesfully 🎉. Enjoy it 🙂")
             
         }else{
             
-            try _ = fileManager.replaceItemAt(URL(fileURLWithPath:"\(destinationPath)/\(templateName)"), withItemAt: URL(fileURLWithPath:templateName))
+            try _ = fileManager.replaceItemAt(URL(fileURLWithPath:"\(destinationPath)/\(templateMVP)"), withItemAt: URL(fileURLWithPath:templateMVP))
             
-            printInConsole("✅  Template already exists. So has been replaced succesfully 🎉. Enjoy it 🙂")
+            printInConsole("✅  Architecture Kit MVP already exists. So has been replaced succesfully 🎉. Enjoy it 🙂")
+        }
+
+        if !fileManager.fileExists(atPath:"\(destinationPath)/\(templateMVVM)"){
+        
+            try fileManager.copyItem(atPath: templateMVVM, toPath: "\(destinationPath)/\(templateMVVM)")
+            
+            printInConsole("✅  Architecture Kit MVVM installed succesfully 🎉. Enjoy it 🙂")
+            
+        }else{
+            
+            try _ = fileManager.replaceItemAt(URL(fileURLWithPath:"\(destinationPath)/\(templateMVVM)"), withItemAt: URL(fileURLWithPath:templateMVVM))
+            
+            printInConsole("✅  Architecture Kit MVVM already exists. So has been replaced succesfully 🎉. Enjoy it 🙂")
         }
     }
     catch let error as NSError {
