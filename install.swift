@@ -1,7 +1,3 @@
-//
-//  main.swift
-//  InstallVIPERTemplate
-//
 //  Created by Fauzi Sholichin on 23/02/2019.
 //  Copyright © 2019 Fauzi Sholichin. All rights reserved.
 //
