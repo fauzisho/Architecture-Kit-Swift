@@ -31,6 +31,6 @@ sudo swift install.swift
 - [Architecting iOS Apps with VIPER](https://www.objc.io/issues/13-architecture/viper/)
 
 ### Contribution
-Architecture Kit Swift is fully open-source. Allsuggestions and contributions are welcome!
+Architecture Kit Swift is fully open-source. All suggestions and contributions are welcome!
 
 
