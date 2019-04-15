@@ -15,4 +15,9 @@ class ___VARIABLE_productName:identifier___Presenter: ___VARIABLE_productName:id
         self.view = interface
     }
 
+    func test() {
+        self.view?.isLoading(loading: true)
+        self.view?.isError(message: "message")
+        self.view?.isLoading(loading: false)
+    }
 }

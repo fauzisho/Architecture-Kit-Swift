@@ -13,6 +13,16 @@ class ___VARIABLE_productName:identifier___ViewController: UIViewController, ___
 	override func viewDidLoad() {
         super.viewDidLoad()
         presenter = ___VARIABLE_productName:identifier___Presenter(interface: self)
+        presenter?.test()
     }
-
+    
+    func isLoading(loading: Bool) {
+        // show loading
+        print("check loading \(loading)")
+    }
+    
+    func isError(message: String) {
+        // show error
+        print("check message \(message)")
+    }
 }

@@ -8,10 +8,12 @@ import Foundation
 
 //Component: Presenter -
 protocol ___VARIABLE_productName:identifier___PresenterProtocol: class {
-
+  func test()
 }
 
 //Component: View -
 protocol ___VARIABLE_productName:identifier___ViewProtocol: class {
   var presenter: ___VARIABLE_productName:identifier___PresenterProtocol?  { get set }
+  func isLoading(loading : Bool)
+  func isError(message : String)
 }
