@@ -25,7 +25,7 @@ Click Right Folder -> Click New File -> Choose Architecture
 - [x] MVP
 - [x] MVVM
 - [ ] MVVM-C
-- [ ] VIPER
+- [x] VIPER
 - [ ] VIVMER
 - [ ] TEA
 - [ ] REDUX
