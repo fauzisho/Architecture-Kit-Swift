@@ -13,6 +13,13 @@ Only need execute this command in terminal:
 sudo swift install.swift
 ```
 
+## How to use
+
+![Architecture Kit](https://raw.githubusercontent.com/fauzisho/Architecture-Kit-Swift/master/image2.png)
+
+Click Right Folder -> Click New File -> Choose Architecture
+
+
 ### Architecture Template
 
 - [x] MVP
