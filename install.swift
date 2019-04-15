@@ -6,6 +6,8 @@ import Foundation
 
 let templateMVP = "MVP Kit.xctemplate"
 let templateMVVM = "MVVM Kit.xctemplate"
+let templateVIPER = "VIPER Kit.xctemplate"
+
 let destinationRelativePath = "/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/Project Templates/iOS/Application"
 
 func printInConsole(_ message:Any){
@@ -43,6 +45,19 @@ func moveTemplate(){
             try _ = fileManager.replaceItemAt(URL(fileURLWithPath:"\(destinationPath)/\(templateMVVM)"), withItemAt: URL(fileURLWithPath:templateMVVM))
             
             printInConsole("✅  Architecture Kit MVVM already exists. So has been replaced succesfully 🎉. Enjoy it 🙂")
+        }
+
+        if !fileManager.fileExists(atPath:"\(destinationPath)/\(templateVIPER)"){
+        
+            try fileManager.copyItem(atPath: templateVIPER, toPath: "\(destinationPath)/\(templateVIPER)")
+            
+            printInConsole("✅  Architecture Kit VIPER installed succesfully 🎉. Enjoy it 🙂")
+            
+        }else{
+            
+            try _ = fileManager.replaceItemAt(URL(fileURLWithPath:"\(destinationPath)/\(templateVIPER)"), withItemAt: URL(fileURLWithPath:templateVIPER))
+            
+            printInConsole("✅  Architecture Kit VIPER already exists. So has been replaced succesfully 🎉. Enjoy it 🙂")
         }
     }
     catch let error as NSError {
