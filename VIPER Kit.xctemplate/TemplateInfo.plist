@@ -44,20 +44,6 @@
 			<key>Type</key>
 			<string>static</string>
 		</dict>
-		<dict>
-			<key>Identifier</key>
-			<string>withoutObserver</string>
-			<key>Name</key>
-			<string>without observer class</string>
-			<key>Description</key>
-			<string>without observer class</string>
-			<key>Type</key>
-			<string>checkbox</string>
-			<key>Default</key>
-			<string>false</string>
-			<key>NotPersisted</key>
-			<true/>
-		</dict>
 	</array>
 	<key>Template Author</key>
 	<string>Fauzi Sholichin - @fauzisho</string>
