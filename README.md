@@ -3,7 +3,7 @@
 
 ![Architecture Kit](https://raw.githubusercontent.com/fauzisho/Architecture-Kit-Swift/master/image.png)
 
-Template to help developer create new component architecture in MVP, MVVM, VIPER, VIVMER, Redux, and any more
+Template to help developer create new component architecture are MVP, MVVM, VIPER, VIVMER, Redux, and many more
 
 ## How to install
 
