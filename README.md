@@ -26,7 +26,7 @@ Click Right Folder -> Click New File -> Choose Architecture
 - [x] MVVM
 - [ ] MVVM-C
 - [x] VIPER
-- [ ] VIVMER
+- [x][VIVMER](https://github.com/fauzisho/VIVMER-Architecture)
 - [ ] ELM
 - [ ] REDUX
 
