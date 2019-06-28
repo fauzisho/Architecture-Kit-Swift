@@ -32,8 +32,6 @@ Click Right Folder -> Click New File -> Choose Architecture
 
 ### App Example 
 
-## MVVM
-- Friend(https://github.com/JussiSuojanen/friends)
 
 ### Reference 
 
