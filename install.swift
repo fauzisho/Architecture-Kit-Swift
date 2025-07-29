@@ -4,90 +4,78 @@
 
 import Foundation
 
+// Get the actual logged-in user's home directory (e.g., /Users/yourname)
+func getUserHomePath() -> String? {
+    // Option 1: Use environment variable $HOME
+    if let home = ProcessInfo.processInfo.environment["HOME"], !home.isEmpty {
+        return home
+    }
+    
+    // Fallback: Use NSHomeDirectory()
+    return NSHomeDirectory()
+}
+
+// Template names
 let templateMVP = "MVP Kit.xctemplate"
 let templateMVVM = "MVVM Kit.xctemplate"
 let templateVIPER = "VIPER Kit.xctemplate"
 
-let destinationRelativePath = "/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/Project Templates/iOS/Application"
+// ✅ Use real user's home, not root's
+guard let userHome = getUserHomePath() else {
+    print("❌ Could not determine user home directory.")
+    exit(1)
+}
 
-func printInConsole(_ message:Any){
+let xcodeTemplatesPath = "\(userHome)/Library/Developer/Xcode/Templates/Project Templates/Application"
+
+func printInConsole(_ message: Any) {
     print("====================================")
     print("\(message)")
     print("====================================")
 }
 
-func moveTemplate(){
-
+func moveTemplate() {
     let fileManager = FileManager.default
-    let destinationPath = bash(command: "xcode-select", arguments: ["--print-path"]).appending(destinationRelativePath)
+    let currentDir = fileManager.currentDirectoryPath
+
+    // Ensure destination directory exists
     do {
-        if !fileManager.fileExists(atPath:"\(destinationPath)/\(templateMVP)"){
-        
-            try fileManager.copyItem(atPath: templateMVP, toPath: "\(destinationPath)/\(templateMVP)")
-            
-            printInConsole("✅  Architecture Kit MVP installed succesfully 🎉. Enjoy it 🙂")
-            
-        }else{
-            
-            try _ = fileManager.replaceItemAt(URL(fileURLWithPath:"\(destinationPath)/\(templateMVP)"), withItemAt: URL(fileURLWithPath:templateMVP))
-            
-            printInConsole("✅  Architecture Kit MVP already exists. So has been replaced succesfully 🎉. Enjoy it 🙂")
+        if !fileManager.fileExists(atPath: xcodeTemplatesPath) {
+            try fileManager.createDirectory(
+                atPath: xcodeTemplatesPath,
+                withIntermediateDirectories: true,
+                attributes: nil
+            )
+            printInConsole("✅ Created: \(xcodeTemplatesPath)")
+        }
+    } catch let error {
+        printInConsole("❌ Failed to create path: \(error.localizedDescription)")
+        return
+    }
+
+    let templates = [templateMVP, templateMVVM, templateVIPER]
+
+    for template in templates {
+        let src = "\(currentDir)/\(template)"
+        let dst = "\(xcodeTemplatesPath)/\(template)"
+
+        guard fileManager.fileExists(atPath: src) else {
+            printInConsole("⚠️  Not found: \(src)")
+            continue
         }
 
-        if !fileManager.fileExists(atPath:"\(destinationPath)/\(templateMVVM)"){
-        
-            try fileManager.copyItem(atPath: templateMVVM, toPath: "\(destinationPath)/\(templateMVVM)")
-            
-            printInConsole("✅  Architecture Kit MVVM installed succesfully 🎉. Enjoy it 🙂")
-            
-        }else{
-            
-            try _ = fileManager.replaceItemAt(URL(fileURLWithPath:"\(destinationPath)/\(templateMVVM)"), withItemAt: URL(fileURLWithPath:templateMVVM))
-            
-            printInConsole("✅  Architecture Kit MVVM already exists. So has been replaced succesfully 🎉. Enjoy it 🙂")
-        }
-
-        if !fileManager.fileExists(atPath:"\(destinationPath)/\(templateVIPER)"){
-        
-            try fileManager.copyItem(atPath: templateVIPER, toPath: "\(destinationPath)/\(templateVIPER)")
-            
-            printInConsole("✅  Architecture Kit VIPER installed succesfully 🎉. Enjoy it 🙂")
-            
-        }else{
-            
-            try _ = fileManager.replaceItemAt(URL(fileURLWithPath:"\(destinationPath)/\(templateVIPER)"), withItemAt: URL(fileURLWithPath:templateVIPER))
-            
-            printInConsole("✅  Architecture Kit VIPER already exists. So has been replaced succesfully 🎉. Enjoy it 🙂")
+        do {
+            if fileManager.fileExists(atPath: dst) {
+                try fileManager.removeItem(atPath: dst)
+            }
+            try fileManager.copyItem(atPath: src, toPath: dst)
+            printInConsole("✅ Installed: \(template) in \(dst)")
+        } catch let error {
+            printInConsole("❌ Copy failed \(template): \(error.localizedDescription)")
         }
     }
-    catch let error as NSError {
-        printInConsole("❌  Ooops! Something went wrong 😡 : \(error.localizedFailureReason!)")
-    }
-}
 
-func shell(launchPath: String, arguments: [String]) -> String
-{
-    let task = Process()
-    task.launchPath = launchPath
-    task.arguments = arguments
-    
-    let pipe = Pipe()
-    task.standardOutput = pipe
-    task.launch()
-    
-    let data = pipe.fileHandleForReading.readDataToEndOfFile()
-    let output = String(data: data, encoding: String.Encoding.utf8)!
-    if output.count > 0 {
-        //remove newline character.
-        let lastIndex = output.index(before: output.endIndex)
-        return String(output[output.startIndex ..< lastIndex])
-    }
-    return output
-}
-
-func bash(command: String, arguments: [String]) -> String {
-    let whichPathForCommand = shell(launchPath: "/bin/bash", arguments: [ "-l", "-c", "which \(command)" ])
-    return shell(launchPath: whichPathForCommand, arguments: arguments)
+    printInConsole("🎉 Done! Check Xcode → New Project")
 }
 
 moveTemplate()

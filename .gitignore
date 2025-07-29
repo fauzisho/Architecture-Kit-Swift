@@ -1,0 +1,57 @@
+# Xcode
+DerivedData/
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+
+# Swift Package Manager
+/.swiftpm/
+/Packages
+Package.resolved
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# Archives
+*.xcarchive
+
+# macOS
+.DS_Store
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Other
+*.log
+*.tmp
+*.swp
+*.bak
+*.orig
+
+# Environment files
+.env
+
+# Xcode generated docs
+*.docset
+
+# AppCenter
+appcenter-pre-build.sh
+appcenter-post
